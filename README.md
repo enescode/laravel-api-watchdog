@@ -69,10 +69,10 @@ Schedule::command('watchdog:check')->everyFiveMinutes();
 
 ## Türkçe
 
-Laravel API Watchdog, dış API uç noktalarınızı izlemek için tasarlanmış hafif ve güçlü bir pakettir. Yanıt sürelerini izler, durum kodlarını doğrular ve bir API düştüğünde veya zayıf performans gösterdiğinde sizi E-posta veya Günlükler aracılığıyla uyarır.
+Laravel API Watchdog, config dosyanızda belirlediğiniz API rotalarını sizin belirlediğiniz saniyelerde izler ve bir Endpoint uzun süre yada hiç yanıt vermezse sizi e-posta ile bilgilendirir. Böylece herhangi bir olumsuzlukta önceden bilgilendirilirsiniz.
 
 ### ✨ Özellikler
-* 📡 **Çok Yöntemli Destek:** Hem `GET` hem de `POST` isteklerini sorunsuz bir şekilde izleyin.
+* 📡 **Method Desteği:** Hem `GET` hem de `POST` isteklerini sorunsuz bir şekilde izleyin.
 * ⚡ **Performans İzleme:** Bir API yanıtı eşiğinizi aşarsa otomatik olarak sizi uyarır (varsayılan: 2 saniye).
 * 🔐 **Yetkilendirme Desteği:** Güvenli API'ler için kolayca özel başlıklar ve Bearer token'ları ekleyin.
 * 🚨 **Akıllı Uyarı:** Anında e-posta bildirimleri gönderir. E-posta yapılandırılmadıysa, `laravel.log` dosyasına akıllıca geri döner.
