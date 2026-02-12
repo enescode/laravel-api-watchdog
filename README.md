@@ -25,6 +25,25 @@ composer require enescode/laravel-api-watchdog
 ```bash
 php artisan vendor:publish --tag="api-watchdog-config"
 ```
+### ⚙️ Configuration
+```bash
+return [
+    'notify_email' => 'admin@example.com',
+    'max_response_time' => 2000, // miliseconds
+    'endpoints' => [
+        [
+            'name' => 'Payment Gateway',
+            'url' => '[https://api.example.com/v1/status](https://api.example.com/v1/status)',
+            'method' => 'POST',
+            'headers' => [
+                'Authorization' => 'Bearer your-token-here'
+            ],
+            'data' => ['check' => true],
+            'expect' => 200,
+        ],
+    ],
+];
+```
 
 ### 🚀 Usage
 ```bash
@@ -54,20 +73,42 @@ Laravel API Watchdog, dış API uç noktalarınızı izlemek için tasarlanmış
 ### 🛠 Kurulum
 1. Paketi composer aracılığıyla kurun:
 ```bash
-composer require enescode/laravel-api-watchdog```
+composer require enescode/laravel-api-watchdog
+```
 
 ### ✨ Yapılandırma dosyasını yayınlayın:
 ```bash
-php artisan vendor:publish --tag="api-watchdog-config"```
+php artisan vendor:publish --tag="api-watchdog-config"
+```
+
+### ⚙️ Yapılandırma
+```bash
+return [
+    'notify_email' => 'admin@example.com',
+    'max_response_time' => 2000, // milisaniye
+    'endpoints' => [
+        [
+            'name' => 'Ödeme Geçidi',
+            'url' => '[https://api.example.com/v1/status](https://api.example.com/v1/status)',
+            'method' => 'POST',
+            'headers' => [
+                'Authorization' => 'Bearer your-token-here'
+            ],
+            'data' => ['check' => true],
+            'expect' => 200,
+        ],
+    ],
+];
+```
 
 ### 🚀 Kullanım
 ```bash
-php artisan watchdog:check ```
-
+php artisan watchdog:check 
+```
 **İşlemi otomatikleştirmek için komutu app/Console/Kernel.php dosyanıza ekleyin:**
 ```bash
 protected function schedule(Schedule $schedule)
 {
     $schedule->command('watchdog:check')->everyFiveMinutes();
 }
- ```
+```
