@@ -49,14 +49,22 @@ return [
 ```bash
 php artisan watchdog:check 
 ```
-**To automate the process, add the command to your app/Console/Kernel.php:**
+### 📧 Email Configuration 
+To receive email alerts, make sure your `.env` file is properly configured with your SMTP settings. 
+Additionally, define the recipient email address for the watchdog alerts:
+
+
+**Laravel 10 add the command to your app/Console/Kernel.php:**
 ```bash
 protected function schedule(Schedule $schedule)
 {
     $schedule->command('watchdog:check')->everyFiveMinutes();
 }
 ```
-
+**Laravel 10+ add the command to your routes/console.php:**
+```bash
+Schedule::command('watchdog:check')->everyFiveMinutes();
+```
 ---
 
 ## Türkçe
@@ -101,14 +109,25 @@ return [
 ];
 ```
 
-### 🚀 Kullanım
+### 🚀 Kullanımı
 ```bash
 php artisan watchdog:check 
 ```
-**İşlemi otomatikleştirmek için komutu app/Console/Kernel.php dosyanıza ekleyin:**
+
+### 📧 E-Posta Ayarlaması
+E-posta bildirimlerini alabilmek için `.env` dosyanızda SMTP ayarlarının yapılmış olduğundan emin olun. 
+Ayrıca, uyarıların gönderileceği e-posta adresini şu şekilde tanımlayın:
+
+
+**Laravel 10'da app/Console/Kernel.php dosyanıza ekleyin:**
 ```bash
 protected function schedule(Schedule $schedule)
 {
     $schedule->command('watchdog:check')->everyFiveMinutes();
 }
+```
+
+**Laravel 11 ve 12 de routes/console.php dosyanıza ekleyin:**
+```bash
+Schedule::command('watchdog:check')->everyFiveMinutes();
 ```

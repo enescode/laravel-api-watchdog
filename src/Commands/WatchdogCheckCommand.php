@@ -31,13 +31,11 @@ class WatchdogCheckCommand extends Command
             try {
                 $method = strtoupper($api['method'] ?? 'GET');
                 
-                // --- BURASI GÜNCELLENDİ ---
                 $response = Http::withHeaders($api['headers'] ?? []) // Headerları ekledik
                     ->timeout(10)
                     ->send($method, $api['url'], [
                         'json' => $api['data'] ?? []
                     ]);
-                // ---------------------------
                 
                 $endTime = microtime(true);
                 $duration = round(($endTime - $startTime) * 1000); // Milisaniye cinsinden
@@ -77,8 +75,7 @@ class WatchdogCheckCommand extends Command
                    "Zaman: " . now()->toDateTimeString();
 
         // Mail varsa gönder, yoksa logla
-        if ($email) {
-            // Şimdilik basit mail (Mailable sınıfını sonraki adımda ekleyeceğiz)
+        if ($email) {            
             try {
                 Mail::raw($message, function ($m) use ($email) {
                     $m->to($email)->subject('🚨 API Watchdog Uyarısı!');
