@@ -18,16 +18,18 @@ Laravel API Watchdog is a lightweight and powerful package designed to monitor y
 ### 🛠 Installation
 1. Install the package via composer:
 ```bash
-composer require enescode/laravel-api-watchdog```
+composer require enescode/laravel-api-watchdog
+```
 
 ### ✨ Publish the configuration file:
 ```bash
-php artisan vendor:publish --tag="api-watchdog-config"```
+php artisan vendor:publish --tag="api-watchdog-config"
+```
 
 ### 🚀 Usage
 ```bash
-php artisan watchdog:check ```
-
+php artisan watchdog:check 
+```
 **To automate the process, add the command to your app/Console/Kernel.php:**
 ```bash
 protected function schedule(Schedule $schedule)
